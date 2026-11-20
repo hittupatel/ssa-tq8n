@@ -183,16 +183,25 @@ const DEPTS = [
   {id:"a7",sec:"c",w:3,q:"Are equipment inventory and life cycle tracked, with e-waste handled?",std:"",x:"the inventory",goal:"Keep an AV inventory with replacement dates"},
   {id:"a8",sec:"c",w:3,q:"Are purchases planned ahead through IT Admin approvals?",std:"Pre-planning gets the vendor discounts.",x:"purchase planning",goal:"Plan the year's AV purchases in one list"},
  ]},
- {id:"outreach",name:"Outreach",who:"CA Admin, PA Admin and activity coordinators",intro:"Community Affairs and Public Affairs. Items come from last year's Outreach breakout and the Diwali and Unity Forum lessons.",items:[
-  {id:"o1",sec:"c",w:1,q:"Does each 2027 project have a lead and core team named before LAM?",std:"Aksharpith calendars, Unity Forum, Executive Forum, Walk/Run, Satsang Milan.",x:"project leads",goal:"Name a lead and core team for every 2027 project"},
-  {id:"o2",sec:"c",w:1,q:"Does every outreach karyakar have their contacts listed in mySeva?",std:"",x:"mySeva contacts",goal:"Get every outreach contact into mySeva"},
-  {id:"o3",sec:"c",w:2,q:"Is the Aksharpith calendar sponsorship target set with Swami and the Mandir Coordinator?",std:"Drive runs Feb–Apr.",x:"the sponsorship target",goal:"Set and meet the Aksharpith calendar sponsorship target"},
-  {id:"o4",sec:"c",w:2,tier:"ab",q:"Is an Executive Forum or Better Living seminar held once a term?",std:"Target 60% or more gunbhavi guests.",x:"the Executive Forum",goal:"Hold an Executive Forum or seminar every term"},
-  {id:"o5",sec:"c",w:2,tier:"ab",q:"Is a Satsang Milan sabha at home with sants held once a term?",std:"",x:"Satsang Milan",goal:"Hold a Satsang Milan sabha every term"},
-  {id:"o6",sec:"c",w:2,q:"Do big festivals have a guest plan (exact count, reserved seats and parking, one host)?",std:"",x:"the guest plan",goal:"Use one guest plan template for every big festival"},
-  {id:"o7",sec:"c",w:3,q:"Are youth karyakars involved in outreach?",std:"Reach future leaders before they are out of reach.",x:"youth involvement",goal:"Add two youth karyakars to the outreach team"},
-  {id:"o8",sec:"r",w:1,q:"Is the monthly Pramukh Vimarsh held, with the team attending?",std:"",x:"Pramukh Vimarsh",goal:"Hold Pramukh Vimarsh every month"},
-  {id:"o9",sec:"r",w:3,q:"Is a media calendar kept and are posts approved before going out?",std:"",x:"the media calendar",goal:"Keep a media calendar with approvals"},
+ {id:"ca",name:"Community Affairs (CA)",who:"CA Admin and the CA activity coordinators",intro:"Relationships with business and community leaders, donors, Hindu mandirs and community organizations. Items come from last year's CA breakout and festival guest experience.",items:[
+  {id:"c1",sec:"c",w:1,q:"Does each 2027 project have a lead and core team named before LAM?",std:"Aksharpith calendars, Unity Forum, Executive Forum, Walk/Run, Satsang Milan.",x:"project leads",goal:"Name a lead and core team for every 2027 project"},
+  {id:"c2",sec:"c",w:1,q:"Does every CA karyakar have their contacts listed in mySeva?",std:"",x:"mySeva contacts",goal:"Get every CA contact into mySeva"},
+  {id:"c3",sec:"c",w:2,q:"Is the Aksharpith calendar sponsorship target set with Swami and the Mandir Coordinator?",std:"Drive runs Feb–Apr.",x:"the sponsorship target",goal:"Set and meet the Aksharpith calendar sponsorship target"},
+  {id:"c4",sec:"c",w:2,tier:"ab",q:"Is an Executive Forum or Better Living seminar held once a term?",std:"Target 60% or more gunbhavi guests.",x:"the Executive Forum",goal:"Hold an Executive Forum or seminar every term"},
+  {id:"c5",sec:"c",w:2,tier:"ab",q:"Is a Satsang Milan sabha at home with sants held once a term?",std:"",x:"Satsang Milan",goal:"Hold a Satsang Milan sabha every term"},
+  {id:"c6",sec:"c",w:2,q:"Do big festivals have a guest plan (exact count, reserved seats and parking, one host)?",std:"",x:"the guest plan",goal:"Use one guest plan template for every big festival"},
+  {id:"c7",sec:"c",w:3,q:"Are youth karyakars involved in CA projects?",std:"Reach future leaders before they are out of reach.",x:"youth involvement",goal:"Add two youth karyakars to the CA team"},
+  {id:"c8",sec:"r",w:1,q:"Is the monthly Pramukh Vimarsh held, with the team attending?",std:"",x:"Pramukh Vimarsh",goal:"Hold Pramukh Vimarsh every month"},
+ ]},
+ {id:"pa",name:"Public Affairs (PA)",who:"PA/Comm Admin with the PA and Comm coordinators",intro:"Elected officials, public institutions and communications (website and media). In Type B–D mandirs one CA/PA/Comm admin may answer for both CA and PA.",items:[
+  {id:"p1",sec:"c",w:1,q:"Are the PA Activity Coordinator and Comm Coordinator roles filled?",std:"In C/D mandirs the CA/PA/Comm Admin may hold them.",x:"the PA and Comm roles",goal:"Name a PA Activity Coordinator and a Comm Coordinator"},
+  {id:"p2",sec:"c",w:1,q:"Does the team keep in touch with local elected officials and public institutions through the year?",std:"Invitations to key events, greetings, regular visits.",x:"official relationships",goal:"Keep a yearly contact plan for local elected officials"},
+  {id:"p3",sec:"c",w:2,tier:"ab",q:"Are local officials and police met at least once a year about mandir safety?",std:"For example, a safety session or forum with local police and officials.",x:"the yearly safety meeting",goal:"Hold one safety meeting a year with local officials and police"},
+  {id:"p4",sec:"c",w:1,q:"Is the mandir website kept current (events, news, timings)?",std:"Every mandir has a website manager.",x:"the website",goal:"Keep the mandir website current every month"},
+  {id:"p5",sec:"c",w:2,tier:"ab",q:"Are relations kept with mainstream and ethnic media for major events?",std:"",x:"media relations",goal:"Keep a media contact list for major events"},
+  {id:"p6",sec:"c",w:3,tier:"ab",q:"Is a trained spokesperson ready to speak to media, only with the sant's approval?",std:"",x:"the spokesperson",goal:"Train one spokesperson for media"},
+  {id:"p7",sec:"r",w:2,q:"Is a media calendar kept and are posts approved before going out?",std:"",x:"the media calendar",goal:"Keep a media calendar with approvals"},
+  {id:"p8",sec:"r",w:2,q:"Does the PA/Comm admin join the monthly regional PA/Comm call?",std:"",x:"the regional call",goal:"Join the regional PA/Comm call every month"},
  ]}
 ];
 
@@ -203,7 +212,8 @@ const EX = {
  services:{k1:["no","time"],k2:["yes"],k3:["partly","time"],k4:["partly","owner"],k5:["no","owner"],v1:["yes"],v2:["partly","engage"],v3:["partly","tools"],v4:["partly","other"],v5:["yes"],v6:["partly","engage"],v7:["yes"]},
  facility:{k1:["partly","engage"],k2:["yes"],k3:["yes"],k4:["yes"],k5:["no","owner"],f1:["partly","time"],f2:["partly","time"],f3:["partly","tools"],f4:["no","owner"],f5:["yes"],f6:["no","owner"],f7:["partly","how"],f8:["yes"],f9:["partly","time"]},
  avit:{k1:["no","time"],k2:["partly","owner"],k3:["partly","time"],k4:["partly","owner"],k5:["no","how"],a1:["yes"],a2:["no","how"],a3:["partly","time"],a4:["no","owner"],a5:["partly","engage"],a6:["partly","how"],a7:["no","tools"],a8:["yes"]},
- outreach:{k1:["no","time"],k2:["partly","owner"],k3:["yes"],k4:["partly","owner"],k5:["no","owner"],o1:["partly","owner"],o2:["no","how"],o3:["yes"],o4:["partly","engage"],o5:["no","time"],o6:["partly","tools"],o7:["no","owner"],o8:["partly","engage"],o9:["no","owner"]}
+ ca:{k1:["no","time"],k2:["partly","owner"],k3:["yes"],k4:["partly","owner"],k5:["no","owner"],c1:["partly","owner"],c2:["no","how"],c3:["yes"],c4:["partly","engage"],c5:["no","time"],c6:["partly","tools"],c7:["no","owner"],c8:["partly","engage"]},
+ pa:{k1:["partly","time"],k2:["no","owner"],k3:["yes"],k4:["partly","owner"],k5:["no","owner"],p1:["partly","owner"],p2:["partly","how"],p3:["yes"],p4:["partly","tools"],p5:["no","how"],p6:["no","owner"],p7:["no","owner"],p8:["partly","time"]}
 };
 
 
