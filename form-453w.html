@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seva Self-Assessment Form</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+
+:root{
+  --bg:#f4eee4; --card:#ffffff; --ink:#1f3744; --ink2:#4a6372; --line:#e2d8c8;
+  --navy:#2f4e5f; --navy-ink:#f4eee4; --coral:#f58e77; --coral-soft:#fde3da; --red:#b4472f;
+  --yes:#2f7f72; --yes-soft:#dcefeb; --partly:#b4472f; --partly-soft:#fde3da; --no:#c44147; --no-soft:#f8dfe0; --teal:#3d9283;
+  --font:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#18272f; --card:#21353f; --ink:#f1ebe1; --ink2:#b7c3c9; --line:#33505e;
+  --navy:#21353f; --navy-ink:#f1ebe1; --coral:#f58e77; --coral-soft:#3b2b27; --red:#f7a48f;
+  --yes:#6cc2b3; --yes-soft:#1c3a36; --partly:#f7a48f; --partly-soft:#3b2b27; --no:#f08a8f; --no-soft:#3d2225; --teal:#2f7f72; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#18272f; --card:#21353f; --ink:#f1ebe1; --ink2:#b7c3c9; --line:#33505e;
+  --navy:#21353f; --navy-ink:#f1ebe1; --coral:#f58e77; --coral-soft:#3b2b27; --red:#f7a48f;
+  --yes:#6cc2b3; --yes-soft:#1c3a36; --partly:#f7a48f; --partly-soft:#3b2b27; --no:#f08a8f; --no-soft:#3d2225; --teal:#2f7f72; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.5;margin:0}
+.col{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+header{background:var(--navy);color:var(--navy-ink);padding-block:18px 14px}
+.mock{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--coral);color:#1f3744;border-radius:999px;padding:2px 10px}
+h1{font-size:24px;margin:8px 0 0;font-weight:800;letter-spacing:-.01em}
+.sub{margin:2px 0 0;opacity:.85;font-size:14px}
+.steps{display:flex;gap:4px;margin-top:14px}
+.steps button{flex:1;min-width:0;border:0;background:rgba(255,255,255,.12);color:var(--navy-ink);border-radius:8px;padding:7px 2px 6px;line-height:1.15;display:flex;flex-direction:column;align-items:center;gap:2px}
+.steps svg{width:18px;height:18px;opacity:.9}
+.steps .tg{font-size:13px;font-weight:700}
+.steps .te{font-size:10px;font-weight:500;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.steps button[aria-current="step"]{background:var(--coral);color:#1f3744}
+.steps button.done{background:rgba(245,142,119,.35)}
+main{padding-block:18px 110px}
+h2{font-size:20px;margin:0 0 4px}
+.lead{color:var(--ink2);margin:0 0 14px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
+label.f{display:block;font-weight:600;font-size:13.5px;margin-bottom:6px}
+.field{margin-bottom:14px}
+select,input[type=text],input[type=date],textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 11px}
+textarea{min-height:64px;resize:vertical}
+.hint{font-size:12.5px;color:var(--ink2);margin:4px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
+.chip:disabled{opacity:.4;cursor:not-allowed}
+.ver{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:var(--teal)}
+.q{border-left:4px solid var(--line)}
+.q[data-a="yes"]{border-left-color:var(--yes)}.q[data-a="partly"]{border-left-color:var(--partly)}.q[data-a="no"]{border-left-color:var(--no)}
+.qtop{display:flex;gap:8px;align-items:flex-start}
+.id{flex:0 0 auto;background:var(--navy);color:var(--navy-ink);font-size:11.5px;font-weight:700;border-radius:6px;padding:2px 7px;margin-top:2px}
+.qt{margin:0;font-weight:600}
+.std{margin:3px 0 0;font-size:12.5px;color:var(--ink2)}
+.nat{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--teal);color:#fff;border-radius:999px;padding:1px 7px;margin-left:4px;vertical-align:1px}
+.ans{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+.ans button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:8px 0;font-weight:700;font-size:14px;color:var(--ink2)}
+.ans button[data-v="yes"][aria-pressed="true"]{background:var(--yes-soft);border-color:var(--yes);color:var(--yes)}
+.ans button[data-v="partly"][aria-pressed="true"]{background:var(--partly-soft);border-color:var(--partly);color:var(--partly)}
+.ans button[data-v="no"][aria-pressed="true"]{background:var(--no-soft);border-color:var(--no);color:var(--no)}
+.chal{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.chal .f{font-size:12.5px}
+.own{border-style:dashed}
+.add{width:100%;border:1px dashed var(--navy);background:none;color:var(--navy);border-radius:10px;padding:11px;font-weight:700;margin-bottom:10px}
+:root[data-theme="dark"] .add{color:var(--coral);border-color:var(--coral)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .add{color:var(--coral);border-color:var(--coral)}}
+.rm{border:0;background:none;color:var(--ink2);text-decoration:underline;font-size:12px;padding:0;margin-top:8px}
+.sumrow{display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.sumrow:first-of-type{border-top:0}
+.stack{display:flex;gap:2px;height:10px;margin:8px 0}
+.stack span{display:block;height:100%}
+.goal{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;padding:10px 0;border-top:1px solid var(--line)}
+.goal:first-of-type{border-top:0}
+.rank{font-weight:800;color:var(--red);font-size:18px}
+.gt{margin:0;font-weight:700}
+.gm{margin:2px 0 0;font-size:12.5px;color:var(--ink2)}
+.adopt{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600;margin-top:6px}
+.adopt input{width:17px;height:17px;accent-color:var(--navy)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bar .col{display:flex;gap:10px;padding-block:10px}
+.bar button{flex:1;border-radius:10px;padding:12px;font-weight:700;border:1px solid var(--line);background:var(--card)}
+.bar .next{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
+:root[data-theme="dark"] .bar .next{background:var(--coral);color:#1f3744}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar .next{background:var(--coral);color:#1f3744}}
+.count{font-size:12.5px;color:var(--ink2);margin:-6px 0 12px}
+.done{text-align:center;padding-top:30px}
+.done .big{font-size:44px;line-height:1}
+.next-list{text-align:left}
+@media (prefers-reduced-motion:no-preference){.q{transition:border-color .15s}}
+</style>
+</head>
+<body>
+
+<header><div class="col">
+  <span class="mock">Mock-up · example answers</span>
+  <h1>Seva Self-Assessment</h1>
+  <p class="sub">સેવાનાં ૩ અંગ · LAM 2026–27</p>
+  <nav class="steps" id="steps" aria-label="Form steps"></nav>
+</div></header>
+<main class="col" id="view"></main>
+<div class="bar"><div class="col"><button type="button" id="back">Back</button><button type="button" class="next" id="next">Next</button></div></div>
+
+<script>
+const CH = {
+  owner:{label:"No owner / not enough karyakars", step:x=>`Name one owner for ${x} by Jan 31 and add the role to the karyakar infrastructure in MIS.`},
+  time:{label:"Schedule clash / no time", step:x=>`Put ${x} on the 2027 calendar now, on dates that avoid samaiyas and big events.`},
+  how:{label:"Not sure how / needs training", step:x=>`Ask the RC for a 30-minute walkthrough of ${x}, using the national package or a nearby mandir's example.`},
+  engage:{label:"Low attendance or interest", step:x=>`Send a reminder two days ahead and follow up one-on-one with anyone who misses ${x}.`},
+  tools:{label:"Missing tools, data or material", step:x=>`Tell the RA exactly what is missing for ${x} (template, data or equipment) so the region can supply it.`},
+  other:{label:"Other", step:x=>`Raise ${x} at the pre-LAM admin meeting and agree the first step there.`}
+};
+const PRI = {1:"Core",2:"Important",3:"Stretch"};
+
+const COMMON = [
+  {id:"k1",sec:"k",w:1,q:"Does the department hold a karyakar goshthi every two months?",std:"Six a year. A short one before or after the monthly vimarsh counts.",x:"the department goshthi",goal:"Hold a department karyakar goshthi every two months"},
+  {id:"k2",sec:"k",w:1,q:"Every seva has a sevak: is every role in your department's karyakar infrastructure filled and current in MIS?",std:"Activity coordinators down to team members; vacancies listed.",x:"the open roles",goal:"Fill every infrastructure role and keep MIS current"},
+  {id:"k3",sec:"k",w:2,q:"Does seva timing let the team attend Ravi Sabha, aarti and chesta?",std:"For example, everyone out of the kitchen by 3:55 for the main sabha.",x:"seva timing",goal:"Set seva timings so the whole team attends the main sabha"},
+  {id:"k4",sec:"k",w:2,q:"Has every interested volunteer on your list been given a seva and a contact person?",std:"From the department's volunteer data review with the Admin Secretary.",x:"volunteer follow-up",goal:"Connect every listed volunteer to a seva within a month of sign-up"},
+  {id:"k5",sec:"k",w:3,tier:"ab",q:"Are new karyakars and BKY youth onboarded with a seva shadow?",std:"A named buddy for the first two months.",x:"onboarding",goal:"Run a seva shadow for new karyakars and interested BKY youth"}
+];
+
+const DEPTS = [
+ {id:"satsang",name:"Satsang",who:"Satsang Admin, Sabha Coordinator and team leads",intro:"Ravi Sabha quality, katha sevak rotation and reporting. Builds on the 2027 national focus and Swami's Nov 18 guidance.",items:[
+  {id:"s1",sec:"c",w:1,q:"Does Ravi Sabha start on time and finish within two hours?",std:"The standard Swami asked to spell out.",x:"sabha timing",goal:"Start Ravi Sabha on time and finish within two hours, every week"},
+  {id:"s2",sec:"c",w:1,q:"Is there a monthly sabha planning meeting with the Sabha Coordinator and team leads?",std:"Stage, flow, kirtan, deco and MC leads.",x:"the monthly planning meeting",goal:"Hold a monthly sabha planning meeting with all team leads"},
+  {id:"s3",sec:"c",w:2,q:"Is the cue sheet ready and every seva assigned at least a week ahead?",std:"",x:"the cue sheet",goal:"Finish the cue sheet and assignments a week before each sabha"},
+  {id:"s4",nat:1,sec:"c",w:1,q:"Do you have a katha sevak list with profiles?",std:"Language, which sabhas, katha type, experience.",x:"the katha sevak list",goal:"Build the katha sevak list and profiles for the rotation"},
+  {id:"s5",nat:1,sec:"c",w:2,q:"Are katha topics assigned four weeks ahead and confirmed one week before?",std:"NDC syllabi make four weeks possible.",x:"katha scheduling",goal:"Assign kathas four weeks ahead and confirm one week before"},
+  {id:"s6",sec:"c",w:2,q:"Are kathas, MC script, aarti and thal content reviewed before the sabha?",std:"",x:"content review",goal:"Review katha, MC and aarti content before every sabha"},
+  {id:"s7",nat:1,sec:"c",w:2,q:"Do trained katha sevaks (2025 Adhiveshan) get regular turns?",std:"At least one katha every two months each.",x:"the rotation",goal:"Give every trained katha sevak a regular turn"},
+  {id:"s8",sec:"c",w:3,tier:"ab",q:"Does the Satsang team support a smaller nearby mandir's sabha 3–4 times a year?",std:"Katha, kirtan, MC, drama help.",x:"the support visits",goal:"Support a smaller nearby mandir's sabha 3–4 times a year"},
+  {id:"s9",nat:1,sec:"c",w:3,q:"Are seniors (60+) connected to the weekly regional virtual vadil sabha?",std:"Type A also holds an in-person vadil sabha every two weeks.",x:"the vadil sabha",goal:"Connect seniors to the weekly vadil sabha"},
+  {id:"s10",sec:"r",w:1,q:"Is the Ravi Sabha report filed every week (Satsang section)?",std:"The reporting dashboard shows the count; this asks whether it is happening and why not.",x:"weekly reporting",goal:"File the Ravi Sabha report every week"},
+ ]},
+ {id:"network",name:"Network",who:"Network Admin, SNCs and sampark leads",intro:"Sampark karyakar development, the 2027 national focus for Network. Items come from the NAAM network course.",items:[
+  {id:"n1",nat:1,sec:"c",w:1,q:"Is Sampark Vimarsh held every quarter with the national package?",std:"Package studied ahead; local placeholders filled.",x:"Sampark Vimarsh",goal:"Hold Sampark Vimarsh every quarter"},
+  {id:"n2",sec:"c",w:1,q:"Does every zone have an active sampark lead?",std:"Active means running the drives, not a name on paper.",x:"sampark leads",goal:"Name an active sampark lead in every zone"},
+  {id:"n3",nat:1,sec:"c",w:1,q:"Is the category update and sampark reassignment done in Dec–Jan?",std:"Each pair reviews its own families. Gunbhavi Sampark families = Satsangi families.",x:"the category update",goal:"Finish the category update and reassignment by Jan 31"},
+  {id:"n4",nat:1,sec:"c",w:2,q:"Network Admin meets each sampark lead monthly; SNCs meet each karyakar every two months?",std:"",x:"karyakar 1:1s",goal:"Keep monthly and two-monthly karyakar 1:1s going all year"},
+  {id:"n5",sec:"c",w:2,q:"Does every family have a sampark karyakar?",std:"Including new families.",x:"unassigned families",goal:"Assign a sampark karyakar to every family"},
+  {id:"n6",nat:1,sec:"c",w:3,q:"Does each sampark karyakar get a 5–10 minute sant 1:1 once a year?",std:"Tracked by mandir so vicharan can fill gaps.",x:"sant 1:1s",goal:"Give every sampark karyakar a sant 1:1 this year"},
+  {id:"n7",sec:"r",w:1,q:"Is Network Vimarsh held monthly, with sampark leads invited and data discussed?",std:"Not just next month's project.",x:"Network Vimarsh",goal:"Hold a monthly Network Vimarsh built around data"},
+  {id:"n8",sec:"r",w:2,q:"Is Sampark Vimarsh attendance taken as an event, with absentees followed up?",std:"",x:"attendance follow-up",goal:"Take Sampark Vimarsh attendance and follow up every absentee"},
+  {id:"n9",sec:"r",w:2,q:"Do the mandir one-way group and zone bhai/ben groups exist and get posts each month?",std:"",x:"the communication groups",goal:"Keep every sampark group active with monthly posts"},
+  {id:"n10",sec:"r",w:3,q:"Are drive results tracked by zone (Pariksha, shibir, Walkathon)?",std:"",x:"zone tracking",goal:"Track every drive's results by zone"},
+ ]},
+ {id:"services",name:"Services",who:"Services Admin and kitchen team leads",intro:"Kitchen, Sunday prasad and catering. Items come from the 2026 Services goals: nishtha, aatmiyata, operations and compliance.",items:[
+  {id:"v1",sec:"c",w:1,q:"Is the weekly team rota for Sunday prasad published ahead?",std:"Each team knows its Sundays for the term.",x:"the Sunday rota",goal:"Publish the Sunday prasad rota a term ahead"},
+  {id:"v2",sec:"c",w:1,q:"Are food-safety rules followed every time?",std:"Hairnets, hair tucked in, closed-toe shoes, no eating in the kitchen.",x:"food safety",goal:"Keep food-safety rules at 100%, every Sunday"},
+  {id:"v3",sec:"c",w:2,q:"Does the sabha menu use pantry stock, with inventory and orders tracked?",std:"",x:"pantry tracking",goal:"Track pantry stock and plan the menu from it"},
+  {id:"v4",sec:"c",w:2,q:"Are caterings on the shared calendar, and is the admin group told before large ones?",std:"So security and facility know.",x:"catering notice",goal:"Put every catering on the calendar and alert the admin group"},
+  {id:"v5",sec:"c",w:3,q:"Is there a team-building or aatmiyata event once a year?",std:"",x:"the team event",goal:"Hold one team-building event this year"},
+  {id:"v6",sec:"r",w:1,q:"Is a Services Vimarsh held every month (in person or online)?",std:"",x:"Services Vimarsh",goal:"Hold Services Vimarsh every month"},
+  {id:"v7",sec:"r",w:3,q:"Are plate counts and catering numbers recorded each month?",std:"2025: 39,830 Sunday plates and 25 caterings.",x:"monthly counts",goal:"Record plate counts and caterings every month"},
+ ]},
+ {id:"facility",name:"Facilities",who:"Facility Admin and activity coordinators",intro:"Maintenance, cleanliness, safety and reporting. Items mirror the national Facility 2026 goals and the monthly Facility Admin report.",items:[
+  {id:"f1",sec:"c",w:1,q:"Are safety and security walkthroughs done every week?",std:"At least four a month, ideally before sabha, on the national checklist.",x:"safety walkthroughs",goal:"Complete a safety walkthrough every week"},
+  {id:"f2",sec:"c",w:2,q:"Are housekeeping walkthroughs done every week?",std:"",x:"housekeeping walkthroughs",goal:"Complete a housekeeping walkthrough every week"},
+  {id:"f3",sec:"c",w:1,q:"Are 80% of planned preventive-maintenance tasks done each month, tracked in myMandir?",std:"",x:"preventive maintenance",goal:"Complete 80% of planned PM tasks every month"},
+  {id:"f4",sec:"c",w:1,q:"Were four fire drills planned and held this year?",std:"",x:"fire drills",goal:"Plan and hold four fire drills"},
+  {id:"f5",sec:"c",w:2,q:"Are service contracts current (HVAC, kitchen equipment, fire suppression, pest control)?",std:"",x:"service contracts",goal:"Keep every service contract current, with renewal dates on the calendar"},
+  {id:"f6",sec:"c",w:2,q:"Is there a door plan for events when Thakorji rests?",std:"One door agreed with the pujari, a karyakar at the door.",x:"the door plan",goal:"Agree an event door plan and staff it every time"},
+  {id:"f7",sec:"c",w:3,tier:"ab",q:"Are major budget items planned by quarter, each with three quotes?",std:"",x:"budget planning",goal:"Plan major items by quarter with three quotes each"},
+  {id:"f8",sec:"r",w:1,q:"Is Facility Vimarsh held monthly, with 80% of activity coordinators attending?",std:"Ten or more a year.",x:"Facility Vimarsh",goal:"Hold Facility Vimarsh monthly with 80% attendance"},
+  {id:"f9",sec:"r",w:2,q:"Is the monthly Facility Admin report filed?",std:"Filled during or after Facility Vimarsh.",x:"the monthly report",goal:"File the Facility Admin report every month"},
+ ]},
+ {id:"avit",name:"AV & IT",who:"AV Admin, IT Admin and operators",intro:"Sabha AV, equipment, the IT helpdesk and data security. Items come from last year's AV and IT breakouts and this fall's AV decisions.",items:[
+  {id:"a1",sec:"c",w:1,q:"Is the AV checklist run before every Ravi Sabha (mics, screens, livestream)?",std:"",x:"the pre-sabha checklist",goal:"Run the AV checklist before every sabha"},
+  {id:"a2",sec:"c",w:1,q:"Is there a trained backup operator for audio, video and lighting each week?",std:"",x:"backup operators",goal:"Train a backup operator for each AV area"},
+  {id:"a3",sec:"c",w:2,q:"Are breakout-room TVs, cables and clickers tested before events?",std:"LAM, workshops, Sampark Vimarsh.",x:"room setup",goal:"Test every room's AV the day before an event"},
+  {id:"a4",sec:"c",w:2,tier:"ab",q:"Is an IT Helpdesk Coordinator named, and do people know how to raise a ticket?",std:"A Type A role.",x:"the helpdesk",goal:"Name an IT Helpdesk Coordinator and publicise the ticket route"},
+  {id:"a5",sec:"c",w:1,q:"Has every role that needs it finished cybersecurity training?",std:"",x:"cybersecurity training",goal:"Complete cybersecurity training for every required role"},
+  {id:"a6",sec:"c",w:1,q:"Is sensitive data handled by policy?",std:"Downloads only in Govern 365; no Excel lists on WhatsApp or Telegram.",x:"data handling",goal:"Follow the data policy for every list and download"},
+  {id:"a7",sec:"c",w:3,q:"Are equipment inventory and life cycle tracked, with e-waste handled?",std:"",x:"the inventory",goal:"Keep an AV inventory with replacement dates"},
+  {id:"a8",sec:"c",w:3,q:"Are purchases planned ahead through IT Admin approvals?",std:"Pre-planning gets the vendor discounts.",x:"purchase planning",goal:"Plan the year's AV purchases in one list"},
+ ]},
+ {id:"outreach",name:"Outreach",who:"CA Admin, PA Admin and activity coordinators",intro:"Community Affairs and Public Affairs. Items come from last year's Outreach breakout and the Diwali and Unity Forum lessons.",items:[
+  {id:"o1",sec:"c",w:1,q:"Does each 2027 project have a lead and core team named before LAM?",std:"Aksharpith calendars, Unity Forum, Executive Forum, Walk/Run, Satsang Milan.",x:"project leads",goal:"Name a lead and core team for every 2027 project"},
+  {id:"o2",sec:"c",w:1,q:"Does every outreach karyakar have their contacts listed in mySeva?",std:"",x:"mySeva contacts",goal:"Get every outreach contact into mySeva"},
+  {id:"o3",sec:"c",w:2,q:"Is the Aksharpith calendar sponsorship target set with Swami and the Mandir Coordinator?",std:"Drive runs Feb–Apr.",x:"the sponsorship target",goal:"Set and meet the Aksharpith calendar sponsorship target"},
+  {id:"o4",sec:"c",w:2,tier:"ab",q:"Is an Executive Forum or Better Living seminar held once a term?",std:"Target 60% or more gunbhavi guests.",x:"the Executive Forum",goal:"Hold an Executive Forum or seminar every term"},
+  {id:"o5",sec:"c",w:2,tier:"ab",q:"Is a Satsang Milan sabha at home with sants held once a term?",std:"",x:"Satsang Milan",goal:"Hold a Satsang Milan sabha every term"},
+  {id:"o6",sec:"c",w:2,q:"Do big festivals have a guest plan (exact count, reserved seats and parking, one host)?",std:"",x:"the guest plan",goal:"Use one guest plan template for every big festival"},
+  {id:"o7",sec:"c",w:3,q:"Are youth karyakars involved in outreach?",std:"Reach future leaders before they are out of reach.",x:"youth involvement",goal:"Add two youth karyakars to the outreach team"},
+  {id:"o8",sec:"r",w:1,q:"Is the monthly Pramukh Vimarsh held, with the team attending?",std:"",x:"Pramukh Vimarsh",goal:"Hold Pramukh Vimarsh every month"},
+  {id:"o9",sec:"r",w:3,q:"Is a media calendar kept and are posts approved before going out?",std:"",x:"the media calendar",goal:"Keep a media calendar with approvals"},
+ ]}
+];
+
+
+const EX = {
+ satsang:{k1:["no","time"],k2:["yes"],k3:["yes"],k4:["partly","owner"],k5:["no","owner"],s1:["partly","time"],s2:["yes"],s3:["partly","time"],s4:["no","how"],s5:["no","how"],s6:["partly","owner"],s7:["partly","tools"],s8:["partly","time"],s9:["yes"],s10:["partly","engage"]},
+ network:{k1:["partly","time"],k2:["yes"],k3:["yes"],k4:["partly","owner"],k5:["no","how"],n1:["yes"],n2:["partly","owner"],n3:["no","how"],n4:["no","time"],n5:["partly","tools"],n6:["no","owner"],n7:["yes"],n8:["partly","engage"],n9:["partly","engage"],n10:["no","tools"]},
+ services:{k1:["no","time"],k2:["yes"],k3:["partly","time"],k4:["partly","owner"],k5:["no","owner"],v1:["yes"],v2:["partly","engage"],v3:["partly","tools"],v4:["partly","other"],v5:["yes"],v6:["partly","engage"],v7:["yes"]},
+ facility:{k1:["partly","engage"],k2:["yes"],k3:["yes"],k4:["yes"],k5:["no","owner"],f1:["partly","time"],f2:["partly","time"],f3:["partly","tools"],f4:["no","owner"],f5:["yes"],f6:["no","owner"],f7:["partly","how"],f8:["yes"],f9:["partly","time"]},
+ avit:{k1:["no","time"],k2:["partly","owner"],k3:["partly","time"],k4:["partly","owner"],k5:["no","how"],a1:["yes"],a2:["no","how"],a3:["partly","time"],a4:["no","owner"],a5:["partly","engage"],a6:["partly","how"],a7:["no","tools"],a8:["yes"]},
+ outreach:{k1:["no","time"],k2:["partly","owner"],k3:["yes"],k4:["partly","owner"],k5:["no","owner"],o1:["partly","owner"],o2:["no","how"],o3:["yes"],o4:["partly","engage"],o5:["no","time"],o6:["partly","tools"],o7:["no","owner"],o8:["partly","engage"],o9:["no","owner"]}
+};
+
+
+const MANDIRS = [["Raleigh","ab"],["Charlotte","ab"],["Greensboro","ab"],["Greenville SC","ab"],["Fayetteville","cd"],["Myrtle Beach","cd"],["Asheville","cd"],["Perry","cd"]];
+const ESIDE_ONLY = ["facility","avit"];
+const STEPS = [["about","પરિચય","About us"],["ang-1","ઘડતર","Karyakars"],["ang-2","પ્રવૃત્તિ","Seva"],["ang-3","વિમર્શ","Vimarsh"],["review","સંકલ્પ","Our goals"]];
+const TAB_ICONS = {"about": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 16v-4\"></path><path d=\"M12 8h.01\"></path></svg>", "ang-1": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path></svg>", "ang-2": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"></path><path d=\"M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66\"></path><path d=\"m18 15-2-2\"></path><path d=\"m15 18-2-2\"></path></svg>", "ang-3": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z\"></path><path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\"></path></svg>", "review": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>"};
+const ANG = {"ang-1":["k","અંગ 1 · Karyakars","ઘડતર · Are our karyakars growing? The same five items in every department."],
+             "ang-2":["c","અંગ 2 · Core activities","પ્રવૃત્તિ · Is our main seva running well?"],
+             "ang-3":["r","અંગ 3 · Vimarsh & reporting","વિમર્શ · Do we reflect, report and stay connected?"]};
+const S = {mandir:"Raleigh", side:"e", dept:"satsang", by:["Admin","Activity coordinators","Team leads"], date:"2026-12-12",
+           ans:{}, own:{k:[],c:[],r:[]}, adopted:new Set(), note:"", submitted:false};
+(EX.satsang ? Object.entries(EX.satsang) : []).forEach(([k,v]) => S.ans[k] = {a:v[0], c:v[1]||null, note:""});
+S.own.c.push({id:"u1", q:"Kirtan team practises before every sabha"}); S.ans.u1 = {a:"partly", c:"time", note:""};
+let step = "about", ownSeq = 1;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const tier = () => (MANDIRS.find(m => m[0] === S.mandir) || [,"ab"])[1];
+const dept = () => DEPTS.find(d => d.id === S.dept);
+const items = sec => [...COMMON, ...dept().items].filter(i => i.sec === sec && (tier() === "ab" || i.tier !== "ab"));
+const ownItems = sec => S.own[sec].map(o => ({id:o.id, sec, w:2, own:true, q:o.q, x:o.q ? "“"+o.q.toLowerCase()+"”" : "this item", goal:o.q || "Our own item"}));
+const allItems = () => ["k","c","r"].flatMap(s => [...items(s), ...ownItems(s)]);
+
+function renderSteps(){
+  const ix = STEPS.findIndex(s => s[0] === step);
+  document.getElementById("steps").innerHTML = STEPS.map(([id,g,e],k) =>
+    `<button type="button" data-go="${id}" ${id===step?'aria-current="step"':""} class="${k<ix?"done":""}" aria-label="${e}">${TAB_ICONS[id]}<span class="tg">${g}</span><span class="te">${e}</span></button>`).join("");
+}
+function about(){
+  const iside = S.side === "i";
+  return `<h2>પરિચય · About your team</h2><p class="lead">Fill this in together: the admin with coordinators and team leads, about 15 minutes, two or three weeks before LAM.</p>
+  <div class="card">
+    <div class="field"><label class="f" for="mandir">Mandir</label><select id="mandir">${MANDIRS.map(([m]) => `<option ${m===S.mandir?"selected":""}>${m}</option>`).join("")}</select>
+      <span class="ver">${tier()==="ab" ? "Full list (Type A/B)" : "Lighter list (Type C/D)"}</span></div>
+    <div class="field"><span class="f">Side</span><div class="chips">
+      <button type="button" class="chip" data-side="e" aria-pressed="${S.side==="e"}">e-side</button>
+      <button type="button" class="chip" data-side="i" aria-pressed="${S.side==="i"}">i-side</button></div>
+      <p class="hint">e-side and i-side fill the form separately.</p></div>
+    <div class="field"><span class="f">Department</span><div class="chips">${DEPTS.map(d => `<button type="button" class="chip" data-dept="${d.id}" aria-pressed="${d.id===S.dept}" ${iside && ESIDE_ONLY.includes(d.id) ? "disabled" : ""}>${esc(d.name)}</button>`).join("")}</div></div>
+    <div class="field"><span class="f">Who filled it in</span><div class="chips">${["Admin","Activity coordinators","Team leads","RC"].map(b => `<button type="button" class="chip" data-by="${b}" aria-pressed="${S.by.includes(b)}">${b}</button>`).join("")}</div></div>
+    <div class="field" style="margin-bottom:0"><label class="f" for="date">Date</label><input type="date" id="date" value="${S.date}"></div>
+  </div>`;
+}
+function qCard(i){
+  const st = S.ans[i.id] || {};
+  const b = v => `<button type="button" data-q="${i.id}" data-v="${v}" aria-pressed="${st.a===v}">${v[0].toUpperCase()+v.slice(1)}</button>`;
+  const head = i.own
+    ? `<div style="flex:1"><label class="f" for="own-${i.id}">Our own item</label><input type="text" id="own-${i.id}" data-own="${i.id}" value="${esc(i.q)}" placeholder="Describe an activity your team wants to check"></div>`
+    : `<span class="id">${i.id.toUpperCase()}</span><div><p class="qt">${esc(i.q)}${i.nat?'<span class="nat">National focus</span>':""}</p>${i.std?`<p class="std">${esc(i.std)}</p>`:""}</div>`;
+  const chal = (st.a==="partly"||st.a==="no") ? `<div class="chal"><span class="f">What is the main challenge?</span><div class="chips">${Object.entries(CH).map(([k,c]) =>
+      `<button type="button" class="chip" data-q="${i.id}" data-c="${k}" aria-pressed="${st.c===k}">${esc(c.label)}</button>`).join("")}</div>
+      <label class="f" for="note-${i.id}" style="margin-top:10px">Note (optional)</label><textarea id="note-${i.id}" data-note="${i.id}" placeholder="Anything the RC should know">${esc(st.note)}</textarea></div>` : "";
+  return `<div class="card q${i.own?" own":""}" data-a="${st.a||""}"><div class="qtop">${head}</div><div class="ans" role="group" aria-label="Answer">${b("yes")}${b("partly")}${b("no")}</div>${chal}${i.own?`<button type="button" class="rm" data-rm="${i.id}">Remove this item</button>`:""}</div>`;
+}
+function angView(){
+  const [sec,title,lead] = ANG[step];
+  const list = [...items(sec), ...ownItems(sec)];
+  const done = list.filter(i => S.ans[i.id]?.a).length;
+  return `<h2>${title}</h2><p class="lead">${lead}</p><p class="count">${dept().name} · ${done} of ${list.length} answered</p>
+    ${list.map(qCard).join("")}<button type="button" class="add" data-add="${sec}">+ Add our own item</button>`;
+}
+function candidates(){
+  return allItems().map((i,ix) => ({i, ix, s:S.ans[i.id]})).filter(o => o.s && (o.s.a==="no"||o.s.a==="partly"))
+    .map(o => ({...o, score:(4-o.i.w)*2 + (o.s.a==="no"?1:0)})).sort((a,b) => b.score-a.score || a.ix-b.ix);
+}
+function review(){
+  const all = allItems(); const c = {yes:0,partly:0,no:0,open:0};
+  all.forEach(i => c[S.ans[i.id]?.a || "open"]++);
+  const pct = n => (n/all.length*100).toFixed(1)+"%";
+  const per = ["k","c","r"].map((s,k) => { const l=[...items(s),...ownItems(s)]; return [`અંગ ${k+1}`, l.filter(i=>S.ans[i.id]?.a==="yes").length, l.length]; });
+  const top = candidates().slice(0,3);
+  return `<h2>સંકલ્પ · Review and choose our goals</h2><p class="lead">${esc(S.mandir)} · ${S.side}-side · ${esc(dept().name)}</p>
+  <div class="card"><span class="f">Where we stand</span>
+    <div class="stack" aria-hidden="true">${[["yes","var(--yes)"],["partly","var(--partly)"],["no","var(--no)"],["open","var(--line)"]].filter(([k])=>c[k]).map(([k,col])=>`<span style="width:${pct(c[k])};background:${col}"></span>`).join("")}</div>
+    <p class="hint" style="margin-bottom:6px">Yes ${c.yes} · Partly ${c.partly} · No ${c.no}${c.open?` · Not answered ${c.open}`:""}</p>
+    ${per.map(([n,y,t]) => `<div class="sumrow"><span>${n}</span><b>${y} of ${t} in place</b></div>`).join("")}</div>
+  <div class="card"><span class="f">Suggested 2027 goals</span><p class="hint">Core items first, and a No before a Partly. Tick the ones to take to the LAM breakout.</p>
+    ${top.length ? top.map((o,k) => `<div class="goal"><div class="rank">${k+1}</div><div><p class="gt">${esc(o.i.goal)}</p>
+      <p class="gm">${o.i.own?"Our own item":o.i.id.toUpperCase()} · ${o.s.a}${o.s.c?" · "+esc(CH[o.s.c].label.toLowerCase()):""}</p>
+      <label class="adopt"><input type="checkbox" id="adopt-${o.i.id}" data-adopt="${o.i.id}" ${S.adopted.has(o.i.id)?"checked":""}> Make it a 2027 goal</label></div></div>`).join("")
+      : `<p class="hint">No gaps yet.</p>`}</div>
+  <div class="card"><label class="f" for="rcnote">Anything else for the RC and RA?</label><textarea id="rcnote" placeholder="For example, help you need from the region">${esc(S.note)}</textarea></div>`;
+}
+function doneView(){
+  return `<div class="done"><div class="big">🙏</div><h2>Submitted</h2><p class="lead">Mock-up only: nothing was sent.</p></div>
+  <div class="card next-list"><span class="f">What happens next</span>
+    <div class="sumrow"><span>Your one-page summary goes to the admin and RC</span><b>Before LAM</b></div>
+    <div class="sumrow"><span>The team confirms it and picks 2–3 goals</span><b>LAM breakout</b></div>
+    <div class="sumrow"><span>The team plans each goal: owner, first step, date</span><b>LAM breakout</b></div>
+    <div class="sumrow"><span>Answer the same form again</span><b>May · Sep · Jan</b></div></div>`;
+}
+function render(){
+  renderSteps();
+  const v = document.getElementById("view");
+  v.innerHTML = S.submitted ? doneView() : step === "about" ? about() : step === "review" ? review() : angView();
+  const ix = STEPS.findIndex(s => s[0] === step);
+  document.getElementById("back").hidden = ix === 0 || S.submitted;
+  const nx = document.getElementById("next");
+  nx.textContent = S.submitted ? "Start again" : step === "review" ? "Submit" : "Next";
+}
+function go(id){ step = id; S.submitted = false; try { history.replaceState(null, "", "#" + id); } catch(e) {} render(); window.scrollTo(0,0); }
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button"); if(!t) return;
+  if(t.id === "next"){ if(S.submitted){ go("about"); return; } const ix = STEPS.findIndex(s => s[0] === step); if(step === "review"){ S.submitted = true; render(); window.scrollTo(0,0); } else go(STEPS[ix+1][0]); return; }
+  if(t.id === "back"){ const ix = STEPS.findIndex(s => s[0] === step); if(ix > 0) go(STEPS[ix-1][0]); return; }
+  if(t.dataset.go){ go(t.dataset.go); return; }
+  if(t.dataset.side){ S.side = t.dataset.side; if(S.side==="i" && ESIDE_ONLY.includes(S.dept)) S.dept = "satsang"; render(); return; }
+  if(t.dataset.dept){ S.dept = t.dataset.dept; render(); return; }
+  if(t.dataset.by){ const b = t.dataset.by; S.by = S.by.includes(b) ? S.by.filter(x => x!==b) : [...S.by, b]; render(); return; }
+  if(t.dataset.add){ const id = "u" + (++ownSeq); S.own[t.dataset.add].push({id, q:""}); render(); const el = document.getElementById("own-"+id); if(el) el.focus(); return; }
+  if(t.dataset.rm){ for(const k of "kcr") S.own[k] = S.own[k].filter(o => o.id !== t.dataset.rm); delete S.ans[t.dataset.rm]; render(); return; }
+  const q = t.dataset.q; if(!q) return;
+  const cur = S.ans[q] || {note:""};
+  if(t.dataset.v){ S.ans[q] = {...cur, a:t.dataset.v, c: t.dataset.v==="yes" ? null : cur.c || null}; }
+  else if(t.dataset.c){ S.ans[q] = {...cur, c: cur.c===t.dataset.c ? null : t.dataset.c}; }
+  render();
+});
+document.addEventListener("input", e => {
+  const d = e.target.dataset || {};
+  if(e.target.id === "date") S.date = e.target.value;
+  if(e.target.id === "rcnote") S.note = e.target.value;
+  if(d.note){ S.ans[d.note] = {...(S.ans[d.note]||{}), note:e.target.value}; }
+  if(d.own){ for(const k of "kcr"){ const o = S.own[k].find(x => x.id === d.own); if(o) o.q = e.target.value; } }
+});
+document.addEventListener("change", e => {
+  if(e.target.id === "mandir"){ S.mandir = e.target.value; render(); }
+  if(e.target.dataset && e.target.dataset.adopt){ const id = e.target.dataset.adopt; e.target.checked ? S.adopted.add(id) : S.adopted.delete(id); }
+});
+const start = (location.hash || "").slice(1);
+if(STEPS.some(s => s[0] === start)) step = start;
+render();
+</script>
+</body>
+</html>
