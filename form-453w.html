@@ -38,7 +38,7 @@ h1{font-size:24px;margin:8px 0 0;font-weight:800;letter-spacing:-.01em}
 .steps button{flex:1;min-width:0;border:0;background:rgba(255,255,255,.12);color:var(--navy-ink);border-radius:8px;padding:7px 2px 6px;line-height:1.15;display:flex;flex-direction:column;align-items:center;gap:2px}
 .steps svg{width:18px;height:18px;opacity:.9}
 .steps .tg{font-size:13px;font-weight:700}
-.steps .te{font-size:10px;font-weight:500;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.steps .te{font-size:9.5px;font-weight:500;opacity:.85;line-height:1.15;text-align:center;max-width:100%}
 .steps button[aria-current="step"]{background:var(--coral);color:#1f3744}
 .steps button.done{background:rgba(245,142,119,.35)}
 main{padding-block:18px 110px}
@@ -219,11 +219,11 @@ const EX = {
 
 const MANDIRS = [["Raleigh","ab"],["Charlotte","ab"],["Greensboro","ab"],["Greenville SC","ab"],["Fayetteville","cd"],["Myrtle Beach","cd"],["Asheville","cd"],["Perry","cd"]];
 const ESIDE_ONLY = ["facility","avit"];
-const STEPS = [["about","પરિચય","About us"],["ang-1","ઘડતર","Karyakars"],["ang-2","પ્રવૃત્તિ","Seva"],["ang-3","વિમર્શ","Vimarsh"],["review","સંકલ્પ","Our goals"]];
+const STEPS = [["about","પરિચય","About us"],["ang-1","ઘડતર","Karyakars"],["ang-2","પ્રવૃત્તિ","Core Activities"],["ang-3","વિમર્શ","Vimarsh, Reporting & Communication"],["review","સંકલ્પ","Our goals"]];
 const TAB_ICONS = {"about": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 16v-4\"></path><path d=\"M12 8h.01\"></path></svg>", "ang-1": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path></svg>", "ang-2": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"></path><path d=\"M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66\"></path><path d=\"m18 15-2-2\"></path><path d=\"m15 18-2-2\"></path></svg>", "ang-3": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z\"></path><path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\"></path></svg>", "review": "<svg stroke=\"currentColor\" fill=\"none\" stroke-width=\"1.8\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" height=\"18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>"};
 const ANG = {"ang-1":["k","અંગ 1 · Karyakars","ઘડતર · Are our karyakars growing? The same five items in every department."],
-             "ang-2":["c","અંગ 2 · Core activities","પ્રવૃત્તિ · Is our main seva running well?"],
-             "ang-3":["r","અંગ 3 · Vimarsh & reporting","વિમર્શ · Do we reflect, report and stay connected?"]};
+             "ang-2":["c","અંગ 2 · Core Activities","પ્રવૃત્તિ · Is our main seva running well?"],
+             "ang-3":["r","અંગ 3 · Vimarsh, Reporting & Communication","વિમર્શ · Do we reflect, report and stay connected?"]};
 const S = {mandir:"Raleigh", side:"e", dept:"satsang", by:["Admin","Activity coordinators","Team leads"], date:"2026-12-12",
            ans:{}, own:{k:[],c:[],r:[]}, adopted:new Set(), note:"", submitted:false};
 (EX.satsang ? Object.entries(EX.satsang) : []).forEach(([k,v]) => S.ans[k] = {a:v[0], c:v[1]||null, note:""});
@@ -283,7 +283,7 @@ function review(){
   const all = allItems(); const c = {yes:0,partly:0,no:0,open:0};
   all.forEach(i => c[S.ans[i.id]?.a || "open"]++);
   const pct = n => (n/all.length*100).toFixed(1)+"%";
-  const per = ["k","c","r"].map((s,k) => { const l=[...items(s),...ownItems(s)]; return [`અંગ ${k+1}`, l.filter(i=>S.ans[i.id]?.a==="yes").length, l.length]; });
+  const per = ["k","c","r"].map((s,k) => { const l=[...items(s),...ownItems(s)]; return [`${STEPS[k+1][1]} · ${STEPS[k+1][2]}`, l.filter(i=>S.ans[i.id]?.a==="yes").length, l.length]; });
   const top = candidates().slice(0,3);
   return `<h2>સંકલ્પ · Review and choose our goals</h2><p class="lead">${esc(S.mandir)} · ${S.side}-side · ${esc(dept().name)}</p>
   <div class="card"><span class="f">Where we stand</span>
