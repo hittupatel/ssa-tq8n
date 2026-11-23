@@ -244,7 +244,7 @@ function renderSteps(){
 }
 function about(){
   const iside = S.side === "i";
-  return `<h2>પરિચય · About your team</h2><p class="lead">Fill this in together: the admin with coordinators and team leads, about 15 minutes, two or three weeks before LAM.</p>
+  return `<h2>પરિચય · About your team</h2><p class="lead">Fill this in together: the admin with coordinators and team leads, 15–20 minutes, one week before LAM.</p>
   <div class="card">
     <div class="field"><label class="f" for="mandir">Mandir</label><select id="mandir">${MANDIRS.map(([m]) => `<option ${m===S.mandir?"selected":""}>${m}</option>`).join("")}</select>
       <span class="ver">${tier()==="ab" ? "Full list (Type A/B)" : "Lighter list (Type C/D)"}</span></div>
