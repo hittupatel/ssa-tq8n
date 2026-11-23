@@ -130,16 +130,22 @@ const COMMON = [
 
 const DEPTS = [
  {id:"satsang",name:"Satsang",who:"Satsang Admin, Sabha Coordinator and team leads",intro:"Ravi Sabha quality, katha sevak rotation and reporting. Builds on the 2027 national focus and Swami's Nov 18 guidance.",items:[
-  {id:"s1",sec:"c",w:1,q:"Does Ravi Sabha start on time and finish within two hours?",std:"The standard Swami asked to spell out.",x:"sabha timing",goal:"Start Ravi Sabha on time and finish within two hours, every week"},
-  {id:"s2",sec:"c",w:1,q:"Is there a monthly sabha planning meeting with the Sabha Coordinator and team leads?",std:"Stage, flow, kirtan, deco and MC leads.",x:"the monthly planning meeting",goal:"Hold a monthly sabha planning meeting with all team leads"},
+  {id:"s1",sec:"c",w:1,q:"Does Ravi Sabha start on time and finish within two hours?",std:"Start and end within 5 minutes is good; over 10 needs improvement. Ravi Sabha at most 120 minutes.",x:"sabha timing",goal:"Start Ravi Sabha on time and finish within two hours, every week"},
+  {id:"s2",sec:"c",w:1,q:"Is there a monthly sabha planning meeting with the Sabha Coordinator and team leads?",std:"Monthly, at most 30 minutes, with minutes and action items. Stage, flow, kirtan, deco and MC leads.",x:"the monthly planning meeting",goal:"Hold a monthly sabha planning meeting with all team leads"},
   {id:"s3",sec:"c",w:2,q:"Is the cue sheet ready and every seva assigned at least a week ahead?",std:"",x:"the cue sheet",goal:"Finish the cue sheet and assignments a week before each sabha"},
   {id:"s4",nat:1,sec:"c",w:1,q:"Do you have a katha sevak list with profiles?",std:"Language, which sabhas, katha type, experience.",x:"the katha sevak list",goal:"Build the katha sevak list and profiles for the rotation"},
   {id:"s5",nat:1,sec:"c",w:2,q:"Are katha topics assigned four weeks ahead and confirmed one week before?",std:"NDC syllabi make four weeks possible.",x:"katha scheduling",goal:"Assign kathas four weeks ahead and confirm one week before"},
   {id:"s6",sec:"c",w:2,q:"Are kathas, MC script, aarti and thal content reviewed before the sabha?",std:"",x:"content review",goal:"Review katha, MC and aarti content before every sabha"},
-  {id:"s7",nat:1,sec:"c",w:2,q:"Do trained katha sevaks (2025 Adhiveshan) get regular turns?",std:"At least one katha every two months each.",x:"the rotation",goal:"Give every trained katha sevak a regular turn"},
+  {id:"s7",nat:1,sec:"c",w:2,q:"Do trained katha sevaks (2025 Adhiveshan) get regular turns?",std:"At least two assignments a year each, planned with the rotation worksheet.",x:"the rotation",goal:"Give every trained katha sevak a regular turn"},
   {id:"s8",sec:"c",w:3,tier:"ab",q:"Does the Satsang team support a smaller nearby mandir's sabha 3–4 times a year?",std:"Katha, kirtan, MC, drama help.",x:"the support visits",goal:"Support a smaller nearby mandir's sabha 3–4 times a year"},
   {id:"s9",nat:1,sec:"c",w:3,q:"Are seniors (60+) connected to the weekly regional virtual vadil sabha?",std:"Type A also holds an in-person vadil sabha every two weeks.",x:"the vadil sabha",goal:"Connect seniors to the weekly vadil sabha"},
-  {id:"s10",sec:"r",w:1,q:"Is the Ravi Sabha report filed every week (Satsang section)?",std:"The reporting dashboard shows the count; this asks whether it is happening and why not.",x:"weekly reporting",goal:"File the Ravi Sabha report every week"},
+  {id:"s11",sec:"c",w:1,q:"Is the sabha team filled per the 3-5-7 structure?",std:"Seven roles: Sabha Co, Kirtan, Cultural Program, Stage, Sabha A/V liaison, Backstage, Announcement. Type A: 7 karyakars, Type B: 5, Type C/D: 3.",x:"the sabha team roles",goal:"Fill every sabha team role per the 3-5-7 structure"},
+  {id:"s12",sec:"c",w:2,q:"Do emcees rotate, with at least two assignments a year each?",std:"Plan the year's emcee count and track it every month.",x:"the emcee rotation",goal:"Rotate emcees, with at least two assignments each a year"},
+  {id:"s13",sec:"c",w:2,q:"Are kirtan, emcee and speech practised before each sabha?",std:"Kirtan with instruments; emcee and speech rehearsed and reviewed.",x:"practice sessions",goal:"Hold practice before every sabha"},
+  {id:"s14",sec:"c",w:2,q:"Are announcements finished within 7 minutes, with slides sent to AV in advance?",std:"Good: up to 7 minutes. Needs improvement: over 12.",x:"announcement timing",goal:"Keep announcements within 7 minutes"},
+  {id:"s15",sec:"c",w:3,q:"Are the stage and sabha vyavastha checklists in use (inventory, setup, cleaning)?",std:"From the LAM Satsang worksheet: inventory and task lists.",x:"the vyavastha checklists",goal:"Use the stage and sabha vyavastha checklists every week"},
+  {id:"s10",sec:"r",w:1,q:"Is the Ravi Sabha report filed every week (Satsang section)?",std:"Filed by Monday evening. The dashboard shows the count; this asks whether it is happening and why not.",x:"weekly reporting",goal:"File the Ravi Sabha report every week"},
+  {id:"s16",sec:"r",w:2,q:"Is there a short review after each sabha, with feedback and action items noted?",std:"Under 10 minutes; minutes and action items kept.",x:"the post-sabha review",goal:"Hold a short review after every sabha"},
  ]},
  {id:"network",name:"Network",who:"Network Admin, SNCs and sampark leads",intro:"Sampark karyakar development, the 2027 national focus for Network. Items come from the NAAM network course.",items:[
   {id:"n1",nat:1,sec:"c",w:1,q:"Is Sampark Vimarsh held every quarter with the national package?",std:"Package studied ahead; local placeholders filled.",x:"Sampark Vimarsh",goal:"Hold Sampark Vimarsh every quarter"},
@@ -207,7 +213,7 @@ const DEPTS = [
 
 
 const EX = {
- satsang:{k1:["no","time"],k2:["yes"],k3:["yes"],k4:["partly","owner"],k5:["no","owner"],s1:["partly","time"],s2:["yes"],s3:["partly","time"],s4:["no","how"],s5:["no","how"],s6:["partly","owner"],s7:["partly","tools"],s8:["partly","time"],s9:["yes"],s10:["partly","engage"]},
+ satsang:{k1:["no","time"],k2:["yes"],k3:["yes"],k4:["partly","owner"],k5:["no","owner"],s1:["partly","time"],s2:["yes"],s3:["partly","time"],s4:["no","how"],s5:["no","how"],s6:["partly","owner"],s7:["partly","tools"],s8:["partly","time"],s9:["yes"],s10:["partly","engage"],s11:["partly","owner"],s12:["no","how"],s13:["partly","time"],s14:["yes"],s15:["no","tools"],s16:["partly","time"]},
  network:{k1:["partly","time"],k2:["yes"],k3:["yes"],k4:["partly","owner"],k5:["no","how"],n1:["yes"],n2:["partly","owner"],n3:["no","how"],n4:["no","time"],n5:["partly","tools"],n6:["no","owner"],n7:["yes"],n8:["partly","engage"],n9:["partly","engage"],n10:["no","tools"]},
  services:{k1:["no","time"],k2:["yes"],k3:["partly","time"],k4:["partly","owner"],k5:["no","owner"],v1:["yes"],v2:["partly","engage"],v3:["partly","tools"],v4:["partly","other"],v5:["yes"],v6:["partly","engage"],v7:["yes"]},
  facility:{k1:["partly","engage"],k2:["yes"],k3:["yes"],k4:["yes"],k5:["no","owner"],f1:["partly","time"],f2:["partly","time"],f3:["partly","tools"],f4:["no","owner"],f5:["yes"],f6:["no","owner"],f7:["partly","how"],f8:["yes"],f9:["partly","time"]},
